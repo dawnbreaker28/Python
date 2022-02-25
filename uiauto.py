@@ -10,11 +10,9 @@ def test():
     googleWindow = auto.PaneControl(searchDepth=1, Name='新标签页 - Google Chrome')
     print(googleWindow.Name)
     googleWindow.SetTopmost(True)
-    # 查找notepadWindow所有子孙控件中的第一个EditControl，因为EditControl是第一个子控件，可以不指定深度
     search = googleWindow.ComboBoxControl(searchDepth=5, Name='在 Google 上搜索，或者输入一个网址')
     print(search.Name)
     try:
-        # 获取EditControl支持的ValuePattern，并用Pattern设置控件文本为"Hello"
         search.GetValuePattern().SetValue('https://zh.moegirl.org.cn/index.php?title=%E5%88%BB%E6%99%B4&variant=zh-hans'
                                           '&mobileaction=toggle_view_desktop')  # or edit.GetPattern(
     except auto.comtypes.COMError as ex:
@@ -38,12 +36,6 @@ def test():
         #dingWindow.ButtonControl(searchDepth=9, Name='发送').Click()
         time.sleep(0.1)
     dingWindow.ButtonControl(searchDepth=3, Name='关闭').Click()
-    print(1)
-
-    # 然后从TitleBarControl的子孙控件中找第二个ButtonControl, 即最大化按钮，并点击按钮
-    # notepadWindow.TitleBarControl(Depth=1).ButtonControl(foundIndex=2).Click()
-    # 从notepadWindow前两层子孙控件中查找Name为'关闭'的按钮并点击按钮
-    # notepadWindow.ButtonControl(searchDepth=2, Name='关闭').Click()
 
 
 if __name__ == '__main__':
